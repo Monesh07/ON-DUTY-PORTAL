@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ON-DUTY</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<div class="flex justify-center px-5 mt-5">
+    <img src="ace.jpg">
+  </div>
+<body class="font-sans text-base">
+
+<div class="container mx-auto px-4 py-8 ">
+
+  <header class="bg-gray-800 text-white text-center py-4">
+    <h1 class="text-3xl font-bold">On Duty Request System</h1>
+  </header>
+
+  <main class="mt-8">
+    <section id="requestForm" class="bg-cover bg-center border-2 border-black p-8 rounded-lg" style="background-image: url('bg.webp');" >
+      <h2 class="text-2xl italic font-medium mb-4">Submit On Duty Request</h2>
+      <form class="flex flex-col space-y-4" action="connect.php" method="post">
+        <label for="studentName" class="text-lg">Student Name:</label>
+        <input type="text" id="studentName" name="studentName" required class="px-4 py-2 border border-gray-300 rounded-lg">
+
+        <label for="regNo" class="text-lg">Registration Number:</label>
+        <input type="text" id="regNo" name="regNo" required class="px-4 py-2 border border-gray-300 rounded-lg">
+
+        <div class="flex space-x-4">
+          <div class="w-1/3">
+            <label for="Year" class="text-lg">Year:</label>
+            <select id="Year" name="Year" required class="px-4 py-2 border border-gray-300 rounded-lg w-full">
+              <option value="" disabled selected>Select Year</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+
+          <div class="w-1/3">
+            <label for="Department" class="text-lg">Department:</label>
+            <select id="Department" name="Department" required class="px-4 py-2 border border-gray-300 rounded-lg w-full">
+              <option>CSE</option>
+              <option>ECE</option>
+              <option>BME</option>
+              <option>EEE</option>
+              <option>IT</option>
+              <option>AIDS</option>
+              <option>CIVIL</option>
+              <option>MECH</option>
+              <option>CHEMICAL</option>
+              <option>BIO-TECH</option>
+              <option>AERO</option>
+              <option>ARCH</option>
+            </select>
+          </div>
+
+          
+          <div class="w-1/3">
+            <label for="Section" class="text-lg">Section:</label>
+            <select id="Section" name="Section" required class="px-4 py-2 border border-gray-300 rounded-lg w-full">
+              <option value="" disabled selected>Select Section</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
+          </div>
+        </div>
+
+<div class="px-4 py-2 border border-gray-300 rounded-lg w-full">
+  <label for="date1">Date Of Application:</label><br>
+    <input type="date" id="date1" name="date1" value="2023-01-01" required><br><br>
+
+    <label for="date" class="text-lg">Date of OD:</label>
+    <input type="varchar" id="date" name="date" required class="px-4 py-2 border border-gray-300 rounded-lg">
+    
+</div>
+        <label for="reason" class="text-lg">Reason:</label>
+        <select id="reason" name="reason" required class="px-4 py-2 border border-gray-300 rounded-lg">
+          <option value="" disabled selected>Select Reason</option>
+          <option value="Seminar">Seminar</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Symposium">Symposium</option>
+          <option value="NPTEL">NPTEL</option>
+          <option value="Paper Presentation">Paper Presentation</option>
+          <option value="Quiz">Quiz</option>
+          <option value="Internship">Internship</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="Location" class="text-lg">Location:</label>
+        <input type="text" id="Location" name="Location" required class="px-4 py-2 border border-gray-300 rounded-lg">
+
+
+        <!-- Additional input field for Other reason -->
+        <div id="otherReasonInput" style="display: none;">
+          <label for="otherReason" class="text-lg">Other Reason:</label>
+          <input type="text" id="otherReason" name="otherReason" class="px-4 py-2 border border-gray-300 rounded-lg">
+        </div>
+
+       
+
+        <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-lg italic hover:bg-purple-800">Submit Request</button>
+      </form>
+    </section>
+  </main>
+
+ 
+</div>
+
+<script>
+  // JavaScript to show/hide Other Reason input field and Paper Presentation/Quiz levels input field
+  document.getElementById('reason').addEventListener('change', function() {
+    var otherReasonInput = document.getElementById('otherReasonInput');
+    var levelInput = document.getElementById('levelInput');
+    if (this.value === 'Other') {
+      otherReasonInput.style.display = 'block';
+      levelInput.style.display = 'none';
+    } else if (this.value === 'Paper Presentation' || this.value === 'Quiz') {
+      otherReasonInput.style.display = 'none';
+      levelInput.style.display = 'block';
+    } else {
+      otherReasonInput.style.display = 'none';
+      levelInput.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
